@@ -104,3 +104,14 @@ ggplot(weather_df, aes(x = date, y = tmax, color = name)) +
     ## Warning: Removed 19 rows containing missing values (`geom_point()`).
 
 ![](visualization_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+
+## hex
+
+``` r
+ggplot(weather_df, aes(x = tmax, y = tmin)) + 
+  geom_hex()
+```
+
+    ## Warning: Removed 17 rows containing non-finite values (`stat_binhex()`).
+
+![](visualization_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->

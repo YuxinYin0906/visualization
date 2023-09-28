@@ -52,4 +52,12 @@ ggplot(weather_df, aes(x = date, y = tmax, color = name)) +
   facet_grid(.~name)
 ```
 
+## hex
+
+```{r}
+ggplot(weather_df, aes(x = tmax, y = tmin)) + 
+  geom_hex()
+```
+
+
 
