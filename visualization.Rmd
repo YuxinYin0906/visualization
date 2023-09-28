@@ -45,3 +45,11 @@ ggplot(weather_df, aes(x = tmin, y = tmax, color = name)) +
   facet_grid(. ~ name)
 ```
 
+```{r}
+ggplot(weather_df, aes(x = date, y = tmax, color = name)) +
+  geom_point(aes(size = prcp), alpha = 0.3) +
+  geom_smooth() + 
+  facet_grid(.~name)
+```
+
+

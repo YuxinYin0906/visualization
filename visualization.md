@@ -89,3 +89,18 @@ ggplot(weather_df, aes(x = tmin, y = tmax, color = name)) +
     ## Warning: Removed 17 rows containing missing values (`geom_point()`).
 
 ![](visualization_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+
+``` r
+ggplot(weather_df, aes(x = date, y = tmax, color = name)) +
+  geom_point(aes(size = prcp), alpha = 0.3) +
+  geom_smooth() + 
+  facet_grid(.~name)
+```
+
+    ## `geom_smooth()` using method = 'loess' and formula = 'y ~ x'
+
+    ## Warning: Removed 17 rows containing non-finite values (`stat_smooth()`).
+
+    ## Warning: Removed 19 rows containing missing values (`geom_point()`).
+
+![](visualization_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
