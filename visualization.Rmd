@@ -10,6 +10,7 @@ date: "2023-09-28"
 library(tidyverse)
 library(ggridges)
 ```
+
 ```{r}
 weather_df = 
   rnoaa::meteo_pull_monitors(
@@ -59,5 +60,43 @@ ggplot(weather_df, aes(x = tmax, y = tmin)) +
   geom_hex()
 ```
 
+## univariate plotting
 
+```{r}
+ggplot(weather_df, aes(x= tmax, fill = name)) +
+  geom_density(alpha = 0.3, adjust = 2)
+```
+
+
+## boxplot
+
+
+```{r}
+ggplot(weather_df, aes(y= tmax, x = name)) +
+  geom_boxplot()
+```
+
+
+## ridge plot
+
+```{r}
+ggplot(weather_df, aes(x = tmax, y = name)) +
+  geom_density_ridges()
+```
+
+```{r}
+weather_df |>
+  filter(name == "Molokai_HI") |>
+  ggplot(aes(x = date, y = tmax)) +
+  geom_line(alpha = 0.5) +
+  geom_point(size = 0.5)
+```
+
+```{r}
+ggp_weather = 
+  ggplot(weather_df, aes(x = tmin, y = tmax)) + 
+  geom_point(aes(color = name), alpha = .5) 
+
+ggsave("ggp_weather.pdf", ggp_weather, width = 8, height = 5)
+```
 

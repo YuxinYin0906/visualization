@@ -115,3 +115,59 @@ ggplot(weather_df, aes(x = tmax, y = tmin)) +
     ## Warning: Removed 17 rows containing non-finite values (`stat_binhex()`).
 
 ![](visualization_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+
+## univariate plotting
+
+``` r
+ggplot(weather_df, aes(x= tmax, fill = name)) +
+  geom_density(alpha = 0.3, adjust = 2)
+```
+
+    ## Warning: Removed 17 rows containing non-finite values (`stat_density()`).
+
+![](visualization_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+
+## boxplot
+
+``` r
+ggplot(weather_df, aes(y= tmax, x = name)) +
+  geom_boxplot()
+```
+
+    ## Warning: Removed 17 rows containing non-finite values (`stat_boxplot()`).
+
+![](visualization_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+
+## ridge plot
+
+``` r
+ggplot(weather_df, aes(x = tmax, y = name)) +
+  geom_density_ridges()
+```
+
+    ## Picking joint bandwidth of 1.54
+
+    ## Warning: Removed 17 rows containing non-finite values
+    ## (`stat_density_ridges()`).
+
+![](visualization_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+
+``` r
+weather_df |>
+  filter(name == "Molokai_HI") |>
+  ggplot(aes(x = date, y = tmax)) +
+  geom_line(alpha = 0.5) +
+  geom_point(size = 0.5)
+```
+
+![](visualization_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+
+``` r
+ggp_weather = 
+  ggplot(weather_df, aes(x = tmin, y = tmax)) + 
+  geom_point(aes(color = name), alpha = .5) 
+
+ggsave("ggp_weather.pdf", ggp_weather, width = 8, height = 5)
+```
+
+    ## Warning: Removed 17 rows containing missing values (`geom_point()`).
